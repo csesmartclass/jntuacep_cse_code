@@ -1,0 +1,39 @@
+
+ #include<stdio.h>
+	#include<conio.h>
+	#include<ctype.h>
+	void main()
+	{
+		char line[80];
+		int i,vow=0,con=0,digit=0,spch=0,spaces=0;
+		clrscr();
+		printf("\n Enter a line of text :");
+		scanf("%[^\n]",line);
+		i=0;
+		while(line[i]!='\0')
+		{
+			line[i]=tolower(line[i]);
+			if(isalpha(line[i])!=0)
+			{
+				if(line[i]=='a'||line[i]=='e'||line[i]=='i'||line[i]=='o'||line[i]=='u')
+					vow++;
+				else
+					con++;
+			}
+			else if(isdigit(line[i])!=0)
+				digit++;
+			else if(line[i]==' ' || line[i]=='\t')
+				spaces++;
+			else
+				spch++;
+			i++;
+		}
+		printf("\n In the given line of text :\n");
+		printf("\n No. of vowels is=%d",vow);
+		printf("\n No. of consonants is=%d",con);
+		printf("\n No. of digits is=%d",digit);
+		printf("\n No. of spaces is=%d",spaces);
+		printf("\n No. of special characters is=%d",spch);
+		getch();
+	}
+

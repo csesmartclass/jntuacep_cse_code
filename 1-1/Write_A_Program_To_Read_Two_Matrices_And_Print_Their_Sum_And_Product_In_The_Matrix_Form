@@ -1,0 +1,93 @@
+
+ #include<stdio.h>
+	#include<conio.h>
+	void input(int a[8][8],int r,int c);
+	void output(int a[8][8],int r,int c);
+	void add(int a[8][8],int b[8][8],int s[8][8],int r,int c);
+	void multiply(int a[8][8],int b[8][8],int s[8][8],int r,int c,int p);
+	
+	void main()
+	{
+		int a[8][8],b[8][8],s[8][8],r1,c1,r2,c2,ch;
+		clrscr();
+		printf("\n Enter rows and columns of first matrix:");
+		scanf("%d%d",&r1,&c1);
+		printf("\n Enter rows and columns of second matrix:");
+		scanf("%d%d",&r2,&c2);
+		printf("\n Enter the elements of first matrix:");
+		input(a,r1,c1);
+		printf("\n Enter the elements of second matrix:");
+		input(b,r2,c2);
+		printf("\n Elements of first matrix are:");
+		output(a,r1,c1);
+		printf("\n Elements of second matrix are:");
+		output(b,r2,c2);
+
+		if((r1==r2)&&(c1==c2))
+		{
+			add(a,b,s,r1,c1);
+			printf("\n Sum of the two matrices is:");
+			output(s,r1,c1);
+		}
+		else
+		{
+			printf("\n Matrix addition is not possible");
+		}
+		if(c1==r2)
+		{
+			multiply(a,b,s,r1,c2,c1);
+			printf("\n Product of the two matrices is:");
+			output(s,r1,c2);
+		}
+		else
+		{
+			printf("\n Matrix multiplication is not possible");
+		}
+
+
+		getch();
+	}
+	
+	void input(int a[8][8],int r,int c)
+	{
+		int i,j;
+		for(i=0; i<r;i++)
+		for(j=0;j<c;j++)
+		scanf("%d",&a[i][j]);
+	}	
+
+	void output(int a[8][8],int r,int c)
+	{
+		int i,j;
+		printf("\n");
+		for(i=0;i<r;i++)
+		{
+			for(j=0;j<c;j++)
+			{
+				printf("%4d",a[i][j]);
+			}
+			printf("\n ");
+		}
+	}
+
+	void add(int a[8][8],int b[8][8],int s[8][8],int r,int c)
+	{
+		int i,j;
+		for(i=0;i<r;i++)
+			for(j=0;j<c;j++)
+				s[i][j]=a[i][j]+b[i][j];
+	}
+
+	void multiply(int a[8][8],int b[8][8],int s[8][8],int r,int c,int p)
+	{
+		int i,j,k;
+		for(i=0;i<r;i++)
+			for(j=0;j<c;j++)
+			{
+				s[i][j]=0;
+				for(k=0;k<p;k++)
+					s[i][j]=s[i][j]+(a[i][k]*b[k][j]);
+			}
+	}
+
+

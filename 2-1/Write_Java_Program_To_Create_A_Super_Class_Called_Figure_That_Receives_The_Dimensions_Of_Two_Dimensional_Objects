@@ -1,0 +1,67 @@
+
+ //Areas using abstract class 
+	import java.io.*;
+	import java.util.Scanner;
+
+	public class AbstractAreas 
+	{
+
+		public static void main(String[] args) 
+		{
+			Scanner scan=new Scanner(System.in);
+			System.out.println("Enter lenghth of Rectangle: ");
+			double l=scan.nextDouble();
+			System.out.println("Enter breadth of Rectangle: ");
+			double b=scan.nextDouble();
+			System.out.println("Enter height of Rectangle: ");
+			double h=scan.nextDouble();
+			System.out.println("Enter side of Rectangle: ");
+			double s=scan.nextDouble();
+			scan.close();
+			Rectangle r=new Rectangle(l,b);
+			Triangle t=new Triangle(h,s);
+		
+			System.out.println("Area of Rectangle is: "+r.area());
+		
+			System.out.println("Area of Triangle is: "+t.area());
+		}
+
+	}
+
+
+	abstract class Figure
+	{
+		double dim1,dim2;
+		Figure(double a, double b)
+		{
+			dim1=a;
+			dim2=b;
+		}
+		abstract double area();
+	}
+
+
+	class Rectangle extends Figure
+	{
+		Rectangle(double a,double b)
+		{
+			super(a,b);
+		}
+		double area()
+		{
+			return dim1*dim2;
+		}
+	}
+
+	class Triangle extends Figure
+	{
+		Triangle(double a,double b)
+		{
+			super(a,b);
+		}
+		double area()
+		{
+			return (dim1*dim2)/2;
+		}
+	}
+

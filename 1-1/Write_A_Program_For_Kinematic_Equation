@@ -1,0 +1,13 @@
+
+ #include<stdio.h>
+	#include<conio.h>
+	void main()
+	{
+		float s,u,t,a;
+		clrscr();
+		printf("enter u,t,a values\n");
+		scanf("%f %f %f", &u, &t, &a);
+		s=u*t+((1/2)*a*t*t);
+		printf(" distance travelled is %f",s);
+		getch();
+	}

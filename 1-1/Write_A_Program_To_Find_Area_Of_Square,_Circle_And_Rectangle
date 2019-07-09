@@ -1,0 +1,20 @@
+
+ #include<stdio.h>
+	#include<conio.h>
+	#define pi 3.14
+	void main()
+	{
+		float a, r, b, h;
+		clrscr();
+		printf("enter any side to find area of square\n");
+		scanf("%f",&a);
+		printf("area of square is %f\n", a*a);
+		printf("enter radius to find area of circle\n");
+		scanf("%f",&r);
+		printf("area of circle is %f\n", pi*r*r);
+		printf("enter breadth and height to find area of rectangle \n");
+		scanf("%f %f", &b,&h);
+		printf("area of rectangle is %f\n",b*h);
+		getch();
+	}    //similarly try area of tri= (base*height)/2; ellip=pi*a*b; parall=base*height; trapezoi=(a+b)*h/2;
+

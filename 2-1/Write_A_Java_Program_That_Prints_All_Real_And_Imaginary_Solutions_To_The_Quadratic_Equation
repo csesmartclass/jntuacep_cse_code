@@ -1,0 +1,59 @@
+
+ //quadratic equation
+	import java.io.*;
+	import java.util.*;
+
+	public class Equation
+	{
+		public static void main(String args[])
+		{
+			Scanner s=new Scanner(System.in);
+			System.out.println("Enter value of A: ");
+			double a=s.nextDouble();
+		
+			System.out.println("Enter value of B: ");
+			double b=s.nextDouble();
+		
+			System.out.println("Enter value of C: ");
+			double c=s.nextDouble();
+			s.close();
+			double root1=0;
+			double root2=0;
+			System.out.println("Given Quadratic Equation is " +a+"X^2+" +b+"X+"+c+"=0");
+		
+			double disc=b*b-4*a*c;
+
+			if(disc<0)
+			{
+				System.out.println("Roots are imaginary....");
+				double disc1=-(disc);
+			
+				root1=(Math.sqrt(disc1))/(2*a);
+				root2=(Math.sqrt(disc1))/(2*a);
+				System.out.println("Roots of the quadratic equation are: ");
+				System.out.println("Root1: -"+b+"+"+"i("+root1+")");
+				System.out.println("Root2: -"+b+"-"+"i("+root2+")");
+			
+			}
+
+			if(disc==0)
+			{
+				System.out.println("Roots are equal....");
+				root1=-b/(2*a);
+				root2=-b/(2*a);
+			}
+
+			if(disc>0)
+			{
+				System.out.println("Roots are unequal....");
+				root1=(-b+Math.sqrt(disc))/(2*a);
+				root2=(-b-Math.sqrt(disc))/(2*a);
+			}
+			if(disc==0||disc>0)
+			{
+				System.out.println("Roots of the quadratic equations are: ");
+			System.out.println("Root 1: "+root1);
+			System.out.println("Root 2: "+root2);
+			}
+		}
+	}

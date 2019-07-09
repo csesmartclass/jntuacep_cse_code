@@ -1,0 +1,90 @@
+
+ //Stack ADT using arrays(Static Implementation)
+
+	#include<stdio.h>
+	#include<conio.h>
+	#include<stdlib.h>
+	#define MAX 101
+	
+	struct stack
+	{
+		int a[MAX];
+		int top;
+	}st;
+
+	void push(int x)
+	{
+		st.top++;
+		st.a[st.top]=x;
+	}
+
+	int pop()
+	{
+		int x;
+		x=st.a[st.top];
+		st.top--;
+		return x;
+	}
+
+	int Isempty()
+	{
+		if(st.top==-1)
+			return 1;
+		else
+			return 0;
+	}
+
+	void print()
+	{
+		int i;
+		if(Isempty())
+			printf("\n stack is empty);
+		else
+		{
+			printf("\n stack is:");
+			for(i=st.top;i>=0;i--)
+				printf("%d ",st.a[i]);
+		}
+	}
+
+	int main()
+	{
+		int item,choice;
+		char ans;
+		st.top=-1;
+		printf("\n Implementation of stack");
+		do{
+			printf("\n main menu:");
+			printf("\n 1.push\2.pop \3.display \4.exit");
+			printf("\n enter your choice:");
+			scanf("%d",&choice);
+			switch(choice)
+			{
+				case 1:
+					printf("\n enter item to be pushed:");
+					scanf("%d",&item);
+					push(item);
+					break;
+				case 2:
+					if(Isempty())
+					printf("\n stack is empty");
+					else
+					{
+						item=pop();
+						printf("\n the popped element is: %d",item);
+					}
+					break;
+				case 3:
+					print();
+					break;
+				case 4:
+					exit(0);
+				default:
+					printf("\n wrong choice.Try again.");
+			}
+			printf("\n do you want to continue?");
+			ans=getch();
+		}while(ans=='y'||ans=='Y');
+		return 0;
+	}
+	

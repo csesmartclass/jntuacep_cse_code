@@ -1,0 +1,75 @@
+
+ /* 13.c. A file consists of information about employee salary with fields employeeid, name, 
+	Basic, HRA, DA, IT, other-deductions, Gross and Net salary. 
+	Initially only employeeid, name, and basic have valid values.
+	HRA is taken as 10% of the basic, DA is taken as 80% of basic, IT is 20% of the basic, other deductions is user specified.
+	Compute the Gross and Net salary of the employee and update the file */
+
+	#include<stdio.h>
+	#include<conio.h>
+	#include<string.h>
+
+	struct employ
+	{
+		int empid;
+		char name[15];
+		float basic;
+		struct allowances
+		{
+			float hra;
+			float da;
+			float ta;
+			float pf;
+			float it; 	
+		} a;
+		float net;
+		float gross;
+	}emp[20];
+
+	void LinkFloat(void)
+	{
+		float a=0,*b=&a;
+		a=*b;
+	}
+
+	int main()
+	{
+		int n,i;
+		FILE *fp;
+		printf("\n Enter no. of Employees :");
+		scanf("%d",&n);
+		printf("\n Enter Employee details :");
+		for(i=1;i<=n;i++)
+		{
+			printf("\n Enter %d employee details :",i);
+			printf("\n Employee ID :");
+			scanf("%d",&emp[i].empid);
+			fflush(stdin);
+			printf("Name :");
+			gets(emp[i].name);
+			printf("\n Basic salary :");
+			scanf("%f",&emp[i].basic);
+		}
+		for(i=1;i<=n;i++)
+		{
+			emp[i].a.hra= (emp[i].basic * 20) /100;
+			emp[i].a.da= (emp[i].basic * 80) /100;
+			emp[i].a.ta= (emp[i].basic * 12) /100;
+			emp[i].a.pf= (emp[i].basic * 21) /100;
+			emp[i].a.it= (emp[i].basic * 10) /100;
+			emp[i].net= emp[i].basic + emp[i].a.hra + emp[i].a.da +emp[i] .a.ta;
+			emp[i].gross=emp[i].net - emp[i].a.pf-emp[i].a.it; 
+		}
+		fp=fopen("employeeDetails.txt","w");
+		fputs("Details of Employee are  \n",fp);
+		fputs("Employee ID \t Name \t Basic \t  HRA  \t DA \t  TA  \t PF  \t IT  \t Net  \t Gross\n",fp);
+		for(i=1;i<=n;i++)
+			fprintf(fp,"%6d\t%15s\t%6.2f\t%6.2f\t%6.2f\t%6.2f\t%6.2f\t%6.2f%6.2f%6.2f\n", emp[i].empid , emp[i].name , emp[i].basic ,emp[i].a.hra , emp[i].a.da , emp[i].a.ta , emp[i].a.pf , emp[i].a.it , emp[i].net , emp[i].gross);
+		return(0);
+	}
+
+
+
+
+
+

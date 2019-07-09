@@ -1,0 +1,48 @@
+
+ //Sparse Matrices
+
+	#include<stdio.h>
+	#include<conio.h>
+	#include<stdlib.h>
+
+	int main()
+	{
+		static int array[10][10];
+		int i,j,m,n;
+		int counter=o;
+		printf("\n enter the order of the matrix:");
+		scanf("%d %d",&m,&n);
+		printf("\n enter the elements of matrix:");
+		for(i=0;i<m;++i)
+		{
+			for(j=o;j<n;++j)
+			{
+				scanf("%d",&array[i][j]);
+				if(array[i][j]==0)
+				{
+					++counter;
+				}
+			}
+		}
+		printf("\n entered matrix is:");
+		for(i=0;i<m;++i)
+		{
+			for(j=o;j<n;++j)
+			{
+				printf("%d\t",array[i][j]);
+			}
+			printf("\n\t");
+		}
+		if(counter>(m*n)/2)
+		{
+			printf("\n the given matrix is a sparse matrix");
+		}
+		else
+		{
+			printf("\n the given matrix is not a sparse matrix");
+		}
+		printf("\n there are %d number of zeros",counter);
+		return 0;
+	}
+
+

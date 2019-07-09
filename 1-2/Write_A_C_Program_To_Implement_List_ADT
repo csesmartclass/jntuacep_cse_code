@@ -1,0 +1,193 @@
+
+ //List ADT
+	
+	#include<stdio.h>
+	#include<conio.h>
+	#include<stdlib.h>
+
+	struct node
+	{
+		int data;
+		struct node *link;
+	};
+	struct node *h,*p,*t,*p1;
+	void insert_front();
+	void insert_end();
+	void insert_any();
+	void delete_front();
+	void delete_end();
+	void delete_any();
+	void display();
+	
+	void main()
+	{
+		int ch;
+		h=(struct node *)malloc(sizeof(struct node));
+		clrscr();
+		h->data=NULL;
+		h->link=NULL;
+		do
+		{
+			printf("\n1.insert at front \n 2.insert at end \n3.insert at any ");
+			printf("\n4.delete at front\n5.delete at end \n6.delete at any");
+			printf("\n7.display \8.exit");
+			printf("\n enter your choice:");
+			scanf("%d",&ch);
+			switch(ch)
+			{
+				case 1:
+					insert_front();
+					break;
+				case 2:
+					insert_end();
+					break;
+				case 3:
+					insert_any();
+					break;
+				case 4:
+					delete_front();
+					break;
+				case 5:
+					delete_end();
+					break;
+				case 6:
+					delete_any();
+					break;
+				case 7:
+					display();
+					break;
+				case 8:
+					exit(0);
+			}
+		}while(ch!=9);
+		getch();
+	}
+
+	void insert_front()
+	{
+		int val;
+		printf("\n enter data of the node:");
+		scanf("%d",&val);
+		t=(struct node *)malloc(sizeof(struct node));
+		t->data=val;
+		t->link=h->link;
+		h->link=t;
+	}
+
+	void insert_end()
+	{
+		int val;
+		printf("\n enter data of the node:");
+		scanf("%d",&val);
+		t=(struct node *)malloc(sizeof(struct node));
+		p=h;
+		while(p->link!=NULL)
+		{
+			p=p->link;
+		}
+		t->data=val;
+		t->link=p->link;
+		p->link=t;
+	}
+
+	void insert_any()
+	{
+		int val,key;
+		printf("\n enter the data of the node:");
+		scanf("%d",&val);
+		printf("\n enter data of the node after which new node is to be inserted:");
+		scanf("%d",&key);
+		t=(struct node *)malloc(sizeof(struct node));
+		p=h;
+		while(p->link!=NULL&&p->data!=key)
+		{
+			p=p->link;
+		}
+		if(p->data==key)
+		{
+			t->data=val;
+			t->link=p->link;
+			p->link=t;
+		}
+		else
+		{
+			printf("\n value %d not found",key);
+		}
+	}
+
+	void delete_front()
+	{	
+		if(h->link==NULL)
+		{
+			printf("\n Empty linked list.Deletion not possible.");
+		}
+		else
+		{
+			p=h->link;
+			h->link=p->link;
+			printf("\n node deleted from the front is :%d",p-data);
+			free(p);
+		}
+	}
+
+	void delete_end()
+	{
+		if(h->link==NULL)
+		{
+			printf("\n Empty linked list. Deletion not possible");
+		}
+		else
+		{
+			p=h;
+			while(p->link!=NULL)
+			{
+				p1=p;
+				p=p->link;
+			}
+			p1->link=p->link;
+			printf("\n node deleted from the end is :%d",p->data);
+			free(p);
+		}
+	}
+
+	void delete_any()
+	{
+		int key;
+		if(h->link==NULL)
+		{
+			printf("\n Empty linked list.Deletion not possible.");
+		}
+		else
+		{
+			printf("\n enter the data of the node to be deleted:"):
+			scanf("%d",&key);
+			p=h;
+			while(p->link!=NULL&&p->data!=key)
+			{
+				p1=p;
+				p=p->link;
+			}
+			if(p->data==key)
+			{
+				p1->link=p->link;
+				printf("\n node with data %d deleted",p->data);
+				free(p);
+			}
+			else
+			{
+				printf("\n value %d not found.Deletion not possible.",key);
+			}
+		}
+	}
+
+	void display()
+	{
+		printf("\n Contents of the linked list are:");
+		p=h;	
+		while(p->link!=NULL)
+		{	
+			p=p->link;
+			printf("%d",p->data);
+		}
+	}
+

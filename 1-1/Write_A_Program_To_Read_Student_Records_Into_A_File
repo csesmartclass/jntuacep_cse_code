@@ -1,0 +1,117 @@
+
+ /*12.c. Write a program to read student records into a file. 
+	Record consists of rollno, name and marks of a student in six subjects and class. 
+	Class field is empty initially. Compute the class of a student. 
+	The calculation of the class is as per JNTUA rules. 
+	Write the first class, second class, third class and failed students lists separately to another file. */
+
+	#include<stdio.h>
+	#include<conio.h>
+	#include<string.h>
+
+	struct student
+	{
+		char rollno[10];
+		char name[15];
+		int sub[6];
+		char grade[15];
+	}s[20];
+
+	void main()
+	{
+		int n,k,i,j,avg,d[20],f[20],se[20],t[20],fail[20],dc,fc,sc,tc,failc;
+		FILE *fp;
+		clrscr();
+		printf("\n Enter no. of students :");
+		scanf("%d",&n);
+		printf("\n Enter students details :");
+		for(i=1;i<=n;i++)
+		{
+			printf("\n Enter %d student details :",i);
+			flushall();
+			printf("\n Roll No :");
+			gets(s[i].rollno);
+			flushall();
+			printf("Name=");
+			gets(s[i].name);
+			printf("\n Enter six subject Marks:");
+			for(j=1;j<=6;j++)
+				scanf("%d",&s[i].sub[j]);
+		}
+		dc=fc=sc=tc=failc=0;
+		for(i=1;i<=n;i++)
+		{
+			if(s[i].sub[1]<40 || s[i].sub[2]<40 ||s[i].sub[3]<40||s[i].sub[4]<40 ||s[i].sub[5]<40 ||s[i].sub[6]<40)
+			{
+				failc++;
+				fail[failc]=i;
+				strcpy(s[i].grade,"Fail");
+			}
+			else
+			{
+				avg=(s[i].sub[1]+s[i].sub[2]+s[i].sub[3]+s[i].sub[4]+s[i].sub[5]+s[i].sub[6])/6;
+				if(avg>=70)
+				{
+					dc++;
+					d[dc]=i;
+					strcpy(s[i].grade,"Distinction");
+				}
+				else if(avg>=60)
+				{
+					fc++;
+					f[fc]=i;
+					strcpy(s[i].grade,"First Class");
+				}
+				else if(avg>=50)
+				{
+					sc++;
+					se[sc]=i;
+					strcpy(s[i].grade,"Second Class");
+				}
+				else
+				{
+					tc++;
+					t[tc]=i;
+					strcpy(s[i].grade,"Third Class");
+				}
+			}
+		}
+		fp=fopen("Results.txt","w");
+		fputs("Details of Distinction students \n",fp);
+		fputs("Roll No \t Name \t Grade \n",fp);
+		for(i=1;i<=dc;i++)
+		{
+			k=d[i];
+			fprintf(fp,"%10s%3s%4s\n",s[k].rollno,s[k].name,s[k].grade);
+		}
+		fputs("\nDetails of First class students \n",fp);
+		fputs("Roll No \t Name \t    Grade \n\n",fp);
+		for(i=1;i<=fc;i++)
+		{
+			k=f[i];
+			fprintf(fp,"%12s%13s%13s\n",s[k].rollno,s[k].name,s[k].grade);
+		}
+		fputs("\nDetails of Second class students \n",fp);
+		fputs("Roll No \t Name \t Grade \n",fp);
+		for(i=1;i<=sc;i++)
+		{
+			k=se[i];
+			fprintf(fp,"%12s%13s%13s\n",s[k].rollno,s[k].name,s[k].grade);
+		}
+		fputs("\nDetails of Third class students \n",fp);
+		fputs("Roll No \t Name \t Grade \n",fp);
+		for(i=1;i<=tc;i++)
+		{
+			k=t[i];
+			fprintf(fp,"%12s%13s%13s\n",s[k].rollno,s[k].name,s[k].grade);
+		}
+		fputs("\nDetails of Failed students \n",fp);
+		fputs("Roll No \t Name \t Grade \n",fp);
+		for(i=1;i<=failc;i++)
+		{
+			k=fail[i];
+			fprintf(fp,"%12s%13s%13s\n",s[k].rollno,s[k].name,s[k].grade);
+		}
+
+	}
+

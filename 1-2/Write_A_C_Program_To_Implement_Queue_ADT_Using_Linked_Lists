@@ -1,0 +1,107 @@
+
+ //Queue Using Linked List
+
+	#include<stdio.h>
+	#include<conio.h>
+	#include<stdlib.h>
+
+	struct node
+	{
+		int info;
+		struct node *ptr;
+	}*front,*rear,*temp,*front1;
+	void enqueue(int data);
+	void dequeue();
+	void display();
+	
+	void main()
+	{
+		int no,ch,e;
+		clrscr();
+		do{
+			printf("\n1.enqueue \n2.dequeue \n3.display \n 4.exit");
+			printf("\n enter your choice:");
+			scanf("%d",&ch);
+			switch(ch)
+			{
+				case 1:
+					printf("\n enter number into the queue:");
+					scanf("%d",&no);
+					enqueue(no);
+					break;
+				case 2:
+					dequeue();
+					break;
+				case 3:
+					display();
+					break;
+				case 4:
+					exit(0);
+				default:
+					printf("***WRONG CHOICE***);
+			}
+		}while(ch!=5);
+		getch();
+	}
+
+	void enqueue(int data)
+	{
+		if(rear==NULL)
+		{
+			rear=(struct node *)malloc(sizeof(struct node));
+			rear->ptr=NULL;
+			rear->info=data;
+			front=rear;
+		}
+		else
+		{
+			temp=(struct node *)malloc(sizeof(struct node));
+			rear->ptr=temp;
+			temp->info=data;
+			temp->ptr=NULL;
+			rear=temp;
+		}
+	}
+
+	void dequeue()
+	{
+		front1=front;
+		if(front1==NULL)	
+		{
+			printf("\n Error in trying to display elements in the queue:");
+			getch();
+		}
+		else if(front1->ptr!=NULL)
+		{
+			front1=front1->ptr;	
+			printf("\n dequeued value is :%d",front->info);
+			free(front);
+			front=front1;
+		}
+		else
+		{
+			printf("\n dequeued value is :%d",front->info);
+			free(front);
+			front=NULL;
+			rear=NULL;
+		}
+	}
+
+	void display()
+	{
+		front1=front;
+		if((front1==NULL)&&(rear==NULL))
+		{
+			printf("\n Queue is empty:");
+			getch();
+		}
+		while(front1!=rear)
+		{
+			printf("%d",front1->info);
+			front1=front1->ptr;
+		}
+		if(front1==rear)
+			printf("%d",front1->info);
+	}
+
+	

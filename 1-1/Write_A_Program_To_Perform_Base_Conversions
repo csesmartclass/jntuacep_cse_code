@@ -1,0 +1,71 @@
+
+ // 14.a.  Write a program to perform Base (decimal, octal, hexadecimal, etc) conversion.
+
+	#include<stdio.h>
+	#include<conio.h>
+
+	void dec_bin(int decimal)
+	{
+		int r,q,bin[20],i=1,j;
+		q=decimal;
+		while(q!=0)
+		{
+			bin[i++]=q%2;
+			q=q/2;
+		}
+		for(j=i-1;j>0;j--)
+			printf("%d",bin[j]);
+	}
+
+	void dec_oct(int decimal)
+	{
+		int r,q,oct[10],i=1,j;
+		q=decimal;
+		while(q!=0)
+		{
+			oct[i++]= q% 8;
+			q=q/8;
+		}
+		for(j=i-1;j>0;j--)
+			printf("%d",oct[j]);
+	}
+
+	void dec_hex(int decimal)
+	{
+		int r,q,i=1,j,temp;
+		char hexa[10];
+		q=decimal;
+		while(q!=0)
+		{
+			temp = q % 16;
+	 		//To convert integer into character
+			if( temp < 10)
+				temp =temp + 48;
+			else
+				temp = temp + 55;
+			hexa[i++]= temp;
+			q=q/16;
+		}
+		for(j=i-1;j>0;j--)
+		printf("%c",hexa[j]);
+	}
+
+	void main()
+	{
+		int decimal,octal;
+		char hexa[20];
+		long int bin;
+		clrscr();
+		printf("\n Enter a decimal value:");
+		scanf("%d",&decimal);
+		printf("\n Given decimal value is=%d",decimal);
+		printf("\n Equivalent binary value:");
+		dec_bin(decimal);
+		printf("\n Equivalent Octal value:");
+		dec_oct(decimal);
+		printf("\n Equivalent Hexa decimal value:");
+		dec_hex(decimal);
+	}
+
+
+

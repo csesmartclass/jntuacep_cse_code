@@ -1,0 +1,59 @@
+
+ //Quick Sort
+
+	#include<stdio.h>
+	#include<conio.h>
+
+	int main()
+	{
+		int a[100],n,i;
+		clrscr();
+		printf("\n enter number of elements:");
+		scanf("%d",&n);
+		printf("\n enter the %d elements: ",n);
+		for(i=0;i<n;i++)
+		{
+			scanf("%d",&a[i]);
+		}
+		quicksort(a,o,n-1);
+		printf("\n Sorted elements are:");
+		for(i=0;i<n;i++)
+		{
+			printf("%d\t",a[i]);
+		}
+		return 0;
+	}
+
+	void quicksort(int a[], int first_index, last_index)
+	{
+		int pivot_index, temp, index1, index2;
+		if(first_index<last_index)
+		{
+			pivot_index=first_index;
+			index1=first_index;
+			index2=last_index;
+			while(index1<index2)
+			{
+				while(a[index1]<=a[index2]&&index1<last_index)
+				{
+					index1++;
+				}
+				while(a[index2]>a[pivot_index])
+				{
+					index2--;
+				}
+				if(index1<index2)
+				{
+					temp=a[index1];
+					a[index1]=a[index2];
+					a[index2]=temp;
+				}
+			}
+			temp=a[pivot_index];
+			a[pivot_index]=a[index2];
+			a[index2]=temp;
+			quicksort(a,first_index,index2-1);
+			quicksort(a,index2+1,last_index);
+		}
+	}
+

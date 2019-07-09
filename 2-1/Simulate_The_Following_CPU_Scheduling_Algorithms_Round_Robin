@@ -1,0 +1,52 @@
+
+ #include<stdio.h>
+	#include<conio.h>
+
+	void main()
+	{
+		int i,j,n,b[10],w[10],tat[10],t,ct[10],max;
+		float awt=0,att=0,temp=0;
+		clrscr();
+		printf("\n enter the no of processes: ");
+		scanf("%d",&n);
+		for(i=0;i<n;i++)
+		{
+			printf("\n enter burst time for process %d:",i+1);
+			scanf("%d",&b[i]);
+			ct[i]=b[i];
+		}
+		printf("\n enter the size of time slice: ");
+		scanf("%d",&t);
+		max=b[0];
+		for(i=1;i<=n;i++)
+			if(max<b[i])
+				max=b[i];
+		for(j=0;j<(max/t)+1;j++)
+			for(i=0;i<n;i++)
+				if(b[i]!=0)
+					if(b[i]<=t)
+					{
+						tat[i]=temp+b[i];
+						temp=temp+b[i];
+						b[i]=0;
+					}
+					else
+					{
+						b[i]=b[i]-t;
+						temp=temp+t;
+					}
+		for(i=0;i<n;i++)
+		{
+			w[i]=tat[i]-ct[i];
+			att=att+tat[i];
+			awt=awt+w[i];
+		}
+		printf("\n The average turn around time is: %.1f",att/n);
+		printf("\n The average waiting time is: %.1f",awt/n);
+		printf("\n\t Process \t Burst Time \t Waiting Time \t Turnaround Time");
+		for(i=0;i<n;i++)
+			printf("\n \t\t %d \t\t %d \t\t %d \t\t %d",i+1,ct[i],w[i],tat[i]);
+		getch();
+	}
+
+

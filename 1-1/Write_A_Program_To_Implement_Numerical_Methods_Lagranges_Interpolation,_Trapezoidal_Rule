@@ -1,0 +1,90 @@
+
+ /*10.c. Write a program to implement numerical methods Lagrange’s interpolation and Trapezoidal rule*/
+	// Lagrange’s interpolation
+
+	#include<stdio.h>
+	#include<conio.h>
+	#include<stdlib.h>
+	#include<math.h>
+	#define n 5
+
+	void main()
+	{
+		float y[20],x[20],xinp,u,sum=0,prodd,prodn;
+		int i,j;
+		clrscr();
+		printf("Enter the values of Interpolation Points \n");
+		for(i=0;i<n;i++)
+			scanf("%f",&x[i]);
+		printf("Enter the corresponding values of Y \n");
+		for(i=0;i<n;i++)
+			scanf("%f",&y[i]);
+		printf(" Enter the value of x at which Y(x) is needed \n");
+		scanf("%f",&xinp);
+		for(i=0;i<n;i++)
+		{
+			prodn=1.0;
+			prodd=1.0;
+			for(j=0;j<n;j++)
+			{
+				if(i==j)
+					continue;
+				prodn=prodn*(xinp-x[j]);
+				prodd=prodd*(x[i]-x[j]);
+			}
+			sum=sum +(prodn/prodd)*y[i];
+		}
+		printf(" The value of y is %f\n",sum);
+		getch();
+	}
+
+	Input:-
+	Enter the values of Interpolation Points
+	2 5 8 10 12
+	Enter the corresponding values of Y
+	4.4 6.2 6.7 7.5 8.7
+	Enter the value of x at which Y(x) is needed : 7
+
+	Output:-
+	The value of y is 6.486012
+
+
+	/*10.c. Write a program to implement numerical methods Lagrange’s interpolation and
+	Trapezoidal rule*/
+	// Trapezoidal rule
+
+	#include<stdio.h>
+	#include<conio.h>
+	#include<math.h>
+	
+	float fun(float x)
+	{
+		return(1/(1+(x*x)));
+	}
+
+	void main()
+	{
+		float x0,x1,sum,result,h;
+		int i,n,ch;
+		clrscr();
+		printf("\n Enter the lower and upper limits :");
+		scanf("%f%f",&x0,&x1);
+		printf("\nEnter the number of intervals :");
+		scanf("%d",&n);
+		h=(x1-x0)/n;
+		sum=fun(x0)+fun(x1);
+		for(i=1;i<n;i++)
+			sum=sum+2*fun(x0+i*h);
+		result=sum*h/2;
+		printf("\n The Result is = %6.2f",result);
+		getch();
+	}
+
+	Input:
+	Enter the lower and upper limits :10 80
+	Enter the number of intervals :8
+
+	Output:
+	The Result is = 0.10
+
+

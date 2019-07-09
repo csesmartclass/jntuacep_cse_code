@@ -1,0 +1,27 @@
+
+ /* 12.a. Write a program to evaluate the sum of the following series up to ‘n’ terms
+	ex=1+x+x2/2!+x3/3!+x4/4!+-------- */
+
+	#include<stdio.h>
+	#include<conio.h>
+	void main()
+	{
+		float sum=1.0,s;
+		int n,i,x,p,m=1;
+		clrscr();
+		printf("\n Enter x value :");
+		scanf("%d",&x);
+		printf("\n Enter n value :");
+		scanf("%d",&n);
+		p=x;
+		for(i=2;i<=n;i++)
+		{
+			s=(float)p/m;
+			sum=sum+s;
+			m=m*i;
+			p=x*p;
+		}
+		printf("\n Sum of the given series is :%6.4f",sum);
+		getch();
+	}
+

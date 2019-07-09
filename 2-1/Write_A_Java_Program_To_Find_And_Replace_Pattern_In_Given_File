@@ -1,0 +1,73 @@
+
+ //Replace a pattern in a given file.
+	import java.io.*;
+	import java.io.BufferedReader;
+	import java.io.File;
+	import java.io.FileReader;	
+	import java.io.FileWriter;
+	import java.io.IOException;
+	import java.util.Scanner;
+
+	public class FileModification 
+	{
+
+		public static void main(String[] args) 
+		{
+			Scanner scan=new Scanner(System.in);
+			System.out.println("Enter the File Name to open and modify: ");
+			String filename=scan.nextLine();
+			System.out.println("Enter the String to find: ");
+			String oldString=scan.nextLine();
+			System.out.println("Enter the String to be replace: ");
+			String newString=scan.nextLine();
+		
+			scan.close();
+			ReplaceString(filename,oldString,newString);
+	
+		
+
+		}
+
+		private static void ReplaceString(String filename, String oldString,String newString) 
+		{
+			File file=new File(filename);
+		
+			String oldline="",oldline1="";
+			try
+			{
+				BufferedReader reader=new BufferedReader(new FileReader(file));
+				String line=reader.readLine();
+				while(line!=null)
+				{
+					oldline=oldline+line+System.lineSeparator();
+					line=reader.readLine();
+				}
+				reader.close();
+				System.out.println("The contents of the file before modification: ");
+				System.out.println(oldline);
+				String newline=oldline.replaceAll(oldString, newString);
+				FileWriter writer=new FileWriter(file);
+				writer.write(newline);
+				writer.close();
+				BufferedReader reader1=new BufferedReader(new FileReader(file));
+				String line1=reader1.readLine();
+				while(line1!=null)
+				{
+					oldline1=oldline1+line1+System.lineSeparator();
+					line1=reader1.readLine();
+				}
+				reader1.close();
+				System.out.println("The contents of the file After modification: ");
+				System.out.println(oldline1);
+				System.out.println("File Modification done successfully.....");
+			}
+			catch (IOException e)
+			{
+				System.out.println("Error: "+e);
+			}
+		}
+
+	}
+
+
+

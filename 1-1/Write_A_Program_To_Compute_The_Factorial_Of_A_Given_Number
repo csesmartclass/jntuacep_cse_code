@@ -1,0 +1,29 @@
+
+ #include<stdio.h>
+	#include<conio.h>
+
+	void main()
+	{
+		double i, fact = 1, num;
+		clrscr();
+		printf("Enter the number \n");
+		scanf("%lf", &num);
+
+		if (num < 0)
+			printf("factorial is not there for negative nos");
+
+		else if(num==0 || num==1)
+			fact=1;
+
+		else
+		{
+			for (i = 1; i lt;= num; i++)
+			{
+				fact = fact * i;
+			}
+		}
+		printf("Factorial of %lf = %5lf\n", num, fact);
+		getch();
+	}
+
+

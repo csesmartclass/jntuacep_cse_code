@@ -1,0 +1,55 @@
+
+ import java.io.*;
+class Exceptiona extends Exception
+{
+	ExceptionA(String message)
+	{
+		super(message);
+	}
+}
+class ExceptionB extends ExceptionA
+{
+	ExceptionB(String message)
+	{
+		super(message);
+	}
+}
+class ExceptionC extends ExceptionB
+{
+	ExceptionC(String message)
+	{
+		super(message);
+	}
+}
+public class TestException
+{
+	public static void main(String[] args)
+	{
+		try
+		{
+			getException();
+		}	
+		catch(ExceptionA ea)
+		{
+			ea.printStackTrace();
+		}
+		try
+		{
+			getExceptionC();
+		}
+		catch(Exception ea)
+		{
+			ea.printStackTrace();
+		}
+	}
+	public static void getExceptionB()throws ExceptionB
+	{
+		thrown new ExceptionB("Exception B");
+	}
+	public static void getExceptionC()throws ExceptionC
+	{
+		throw new ExceptionC("Exception C");
+	}
+}
+
+

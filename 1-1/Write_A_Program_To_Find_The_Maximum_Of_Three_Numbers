@@ -1,0 +1,43 @@
+
+ #include<stdio.h>
+	#include<conio.h>
+	void main()
+	{
+		int a,b,c;
+		clrscr();
+		printf("enter a,b,c values\n");
+		scanf("%d %d %d", &a,&b,&c);
+		if(a>b)
+		{
+			if(a>c)
+			printf("a(%d) is greatest ",a);
+			else
+			printf("c(%d) is largest",c);
+		}
+		else if(b>c)
+		printf("b(%d) is maximum",b);
+		else
+		printf("c(%d) is largest",c);
+		getch();
+	}
+
+	/*
+	alternative approach
+	#include<stdio.h>
+	#include<conio.h>
+	void main()
+	{
+		int a,b,c;
+		clrscr();
+		printf("enter a,b,c values\n");
+		scanf("%d %d %d", &a,&b,&c);
+		if ((a>b) && (a>c))
+			printf("a is greater than b and c\n");
+		else if ((b>a) && (b>c))
+			printf("b is greater than a and c\n");
+		else
+			printf("C is max of a and b\n");
+		getch();
+	}
+	*/
+

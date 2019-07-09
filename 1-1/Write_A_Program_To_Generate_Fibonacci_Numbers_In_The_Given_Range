@@ -1,0 +1,22 @@
+
+ #include<stdio.h>
+	#include<conio.h>
+	void main()
+	{
+		int num1=0, num2=1,no,counter,fib;
+		clrscr();
+		printf("\n\n\n\t\tENTER LENGTH OF SERIES (N) : ");
+		scanf("%d",&no);
+		printf("\n\n\t\t\t<----FIBONACCI SERIES---->");
+		printf("\n\n\t\t%d  %d",num1,num2);
+		//LOOP WILL RUN FOR 2 TIME LESS IN SERIES AS THESE WAS PRINTED IN ADVANCE
+		for(counter=1;counter<=no-2;counter++)
+		{
+			fib=num1 + num2;
+			printf(" %d",fib);
+			num1=num2;
+			num2=fib;
+		}
+		getch();
+	}
+

@@ -1,0 +1,27 @@
+
+ #include<stdio.h>
+	#include<stdlib.h>
+	/* Puzzle A20 - print a triangle of stars, n rows tall */
+
+	void main(int argc, char *argv[])
+	{
+		int row, j, spaces, stars;
+		int n=12;
+		clrscr();
+		for ( row=0; row < n; row++ )
+		{
+			stars = 2*row+1;
+			spaces = (2*n-1-stars)/2;
+			for ( j=0; j < spaces; j++ )
+				printf(".");
+			for ( j=0; j < stars; j++ )
+				printf("*");
+			for ( j=0; j < spaces; j++ )
+				printf(".");
+			printf("\n");
+		}
+		printf("\n");
+		system("PAUSE");
+		getch();
+	}
+

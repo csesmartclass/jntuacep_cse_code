@@ -1,0 +1,173 @@
+
+ //10.a. Write programs using recursion for Factorial of a number, GCD, LCM, Towers of Hanoi
+	//Factorial of a number
+	Program Description:-
+	In this program we compare whether n≤0.
+	If the condition is true we return 0 otherwise we recursively call the same function by reducing the value of n by 1.
+	
+	#include<stdio.h>
+	#include<conio.h>
+
+	int rfact(int n)
+	{
+		if(n==0 || n==1)
+			return 1;
+		else
+			return(n*rfact(n-1));
+	}
+
+	void main()
+	{
+		int n,f;
+		clrscr();
+		printf("\n Enter a number:");
+		scanf("%d",&n);
+		f= rfact(n);
+		printf("Factorial of %3d is=%d ",n,f);
+		getch();
+	}
+
+	Input:-
+	Enter a number:5
+	Output:-
+	Factorial of 5 is=120
+
+	//10.a. Write programs using recursion for Factorial of a number, GCD, LCM, Towers of Hanoi
+	//GCD
+	Program Description:-
+	Let x, y be two values. If x mod y=0 we return y else we consider y value as x and x mod y as y. 
+	By using these new values of x and y we recursively call the same function.
+
+	#include<stdio.h>
+	#include<conio.h>
+	void main()
+	{
+		int a,b,r;
+		clrscr();
+		printf("\n Enter two numbers:");
+		scanf("%d%d",&a,&b);
+		if(a>b)
+			r=rgcd(a,b);
+		else
+			r=rgcd(b,a);
+		printf("GCD of %3d and %3d is=%3d",a,b,r);
+		getch();
+	}
+
+	int rgcd(int x,int y)
+	{
+		if (x%y==0)
+			return y;
+		else
+			return rgcd(y,(x%y));
+	}
+
+	Input:-
+	Enter two numbers:8 2
+
+	Output:-
+	GCD of 8 and 2 is= 2
+
+	//10.a. Write programs using recursion for Factorial of a number, GCD, LCM, Towers of Hanoi
+	//LCM
+
+	Program Description:-
+	We initialize a variable by 1. We divide this variable with the given two numbers. 
+	If both of the remainders are zero we return the variable otherwise we increment the variable by one.
+	
+	#include<stdio.h>
+	#include<conio.h>
+	int lcm(int, int);
+	
+	void main()
+	{
+		int a, b, result;
+		clrscr();
+		printf("Enter two numbers: ");
+		scanf("%d%d", &a, &b);
+		result = lcm(a, b);
+		printf("The LCM of %d and %d is %d\n", a, b, result);
+		getch();
+	}
+
+	int lcm(int a, int b)
+	{
+		static int common = 1;
+		if (common % a == 0 && common % b == 0)
+			return common;
+		common++;
+		lcm(a, b);
+		return common;
+	}
+
+	Input:-
+	Enter two numbers: 8 6
+
+	Output:-
+	The LCM of 8 and 6 is 24
+
+	//10.a. Write programs using recursion for Factorial of a number, GCD, LCM, Towers of Hanoi
+	//Towers of Hanoi
+
+	Program Description:-
+	Towers of Hanoi:
+
+	Problem:
+	The Towers of Hanoi is a well known children’s game , played with three poles and a number of different sized disks. 
+	Each disk has a hole in the center , allowing it to be placed around any of the poles. 
+	Initially , the disks are placed on the leftmost pole in the order of decreasing. 
+
+	Object of the Game:
+	The Object of the game is to transfer the disks from the leftmost pole to the right most pole .
+	Rules of the Game:
+	 Only one disk is to be transferred at a time.
+	 Each disk must always be placed around one of the poles but not outside.
+	 A larger disk should not be placed on top of a smaller disk .
+
+	Solution of the Game:
+	Assume that there are n disks, numbered from smallest to largest . 
+	If disks are initially stacked on the left pole , the problem of moving all n 
+	disks to the right pole can be stated in the following recursive manner.
+	1. Move the top n-1 disks from the left pole to the center pole.
+	2. Move the nth disk from left pole to right pole
+	3. Move the n-1 disks on the center pole to the right pole.
+
+	
+	#include<stdio.h>
+	#include<conio.h>
+	void transfer(int,char,char,char);
+
+	void main()
+	{
+		int n,ch;
+		clrscr();
+		printf("\n Enter no. of disks:");
+		scanf("%d",&n);
+		transfer(n,'l','r','t');
+		getch();
+	}
+
+	void transfer(int n, char from, char to,char temp)
+	{
+		if(n>0)
+		{
+			transfer(n-1,from,temp,to);
+			printf("\n Move disk %3d from %3c to %3c",n-1,from,to);
+			transfer(n-1,temp,to,from);
+		}
+	}
+
+	Input:-
+	Enter no. of disks:3
+
+	Output:-
+	Move disk 0 from l to r
+	Move disk 1 from l to t
+	Move disk 0 from r to t
+	Move disk 2 from l to r
+	Move disk 0 from t to l
+	Move disk 1 from t to r
+	Move disk 0 from l to r
+
+
+

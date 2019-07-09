@@ -1,0 +1,82 @@
+
+ #include<stdio.h>
+	#include<conio.h>
+	int stringlength(char *s);
+	int stringcompare(char *s1,char *s2,int ,int);
+	void string_concatenate(char *s1,char *s2,int,int);
+	void stringreverse(char *s,int);
+	void main()
+	{
+		char str1[20],str2[30];
+		int n,i,k,l1,l2;
+		clrscr();
+		printf("\n Enter the first string:");
+		scanf("%s",str1);
+		printf("\n Enter the second string: ");
+		scanf("%s",str2);
+		l1=stringlength(str1);
+		printf("\n Length of first string is=%d",l1);
+		l2=stringlength(str2);
+		printf("\n Length of Second string is=%d",l2);
+		k=stringcompare(str1,str2,l1,l2);
+		if(k==1)
+			printf("\n Two strings are equal\n");
+		else
+		{
+			printf("\n Two strings are not equal");
+			printf("\n After concatenating two strings, resultant string is:");
+			string_concatenate(str1,str2,l1,l2);
+		}
+		printf("\n Reverse of first string is=");
+		stringreverse(str1,l1);
+		printf("\n Reverse of second string is=");
+		stringreverse(str2,l2);
+		getch();
+	}
+	
+	int stringlength(char *str)
+	{
+		int k;
+		for(k=0;str[k]!='\0';k++);
+		return(k);
+	}
+	
+	int stringcompare(char *s1,char *s2,int l1,int l2)
+	{
+		int i,t=0;
+		if(l1==l2)
+		{
+			for(i=0;i<l1;i++)
+				if(s1[i]!=s2[i])
+					t=1;
+			if(t==0)
+				return(1);
+			else
+				return(0);
+		}
+		else
+		    return(0);
+	}
+
+	void string_concatenate(char *s1,char *s2,int l1,int l2)
+	{
+		int i;
+		char str[60];
+		for(i=0;i<l1;i++)
+		     str[i]=s1[i];
+		str[l1]=' ';
+		l1++;
+		for(i=0;i<l2;i++)
+		     str[l1+i]=s2[i];
+		printf("%s",str);
+	}
+
+	void stringreverse(char *s,int l)
+	{
+	     int i;
+	     for(i=l-1;i>=0;i--)
+			printf("%c",s[i]);
+	}
+
+
+

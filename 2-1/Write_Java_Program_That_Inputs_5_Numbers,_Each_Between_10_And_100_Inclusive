@@ -1,0 +1,39 @@
+
+ package week3;
+import java.util.*;
+public class Duplicates {
+public static void main(String[] args) {
+int a[]={0,0,0,0,0},i,j,t;
+Scanner s=new Scanner(System.in);
+System.out.println("Enter 5 inputs: ");
+for(i=0;i<5;i++)
+{
+System.out.println("Enter unique value "+(i+1)+":");
+t=s.nextInt();
+if(t>=10&&t<=100)
+{
+a[i]=t;
+}
+else
+{
+System.out.println("Entered number "+t+" is out of range.");
+i--;
+continue;
+}
+for(j=0;j<i;j++)
+{
+if(a[j]==t)
+{
+i--;
+System.out.println("Duplicate value entered is: "+t);
+}
+}
+}
+System.out.println("5 unique values are: ");
+for(i=0;i<5;i++)
+{
+System.out.println(a[i]);
+}
+s.close();
+}
+}

@@ -1,0 +1,53 @@
+
+ #include<stdio.h>
+	#include<conio.h>
+
+	void main()
+	{
+		int n,i,j,bt[10],wt=0,tat=0,temp;
+		float atwt,attat,twt,ttat;
+		clrscr();
+		printf("\n Enter Number of processes: ");
+		scanf("%d",&n);
+
+		for(i=1;i<=n;i++)
+		{
+			printf("\n Enter Burst Time of process %d: ",i);
+			scanf("%d",&bt[i]);
+		}
+
+		for(i=1;i<=n;i++)
+		{
+			for(j=1;j<=n;j++)
+			{
+				if(bt[i]<bt[j])
+				{
+					temp=bt[i];
+					bt[i]=bt[j];
+					bt[j]=temp;
+				}
+			}
+		}
+
+		printf("\n P\t\t BT\t\t WT\t\t TAT");
+
+		for(i=1;i<=n;i++)
+		{
+			tat=bt[i]+wt;
+			twt=twt+wt;
+			printf("\n %d\t\t %d\t\t %d\t\t %d\t\t",i,bt[i],wt,tat);
+			wt=wt+bt[i];
+			ttat=ttat+wt;
+		}
+
+		printf("\n total turn around time is: %.0f",ttat);
+		printf("\n total waiting time is: %.0f",twt);
+		atwt=twt/n;
+		printf("\n average total waiting time is: %.1f",atwt);
+		attat=ttat/n;
+		printf("\n average total turn around time is: %.1f",attat);
+		getch();
+	}
+
+
+

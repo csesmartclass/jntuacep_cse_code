@@ -1,0 +1,13 @@
+
+ #include<stdio.h>
+	#include<conio.h>
+	void main()
+	{
+		int a,b,max;
+		clrscr();
+		printf("enter a,b values\n");
+		scanf("%d %d",&a,&b);
+		max=(a>b)?a:b;
+		printf("max of 2 no's is %d",max);
+		getch();
+	}

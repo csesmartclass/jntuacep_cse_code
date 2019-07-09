@@ -1,0 +1,18 @@
+
+ #include<stdio.h>
+#include<conio.h>
+void main()
+{
+int i,*p,n,s;
+clrscr();
+printf("\n enter number of pages:");
+scanf("%d",&n);
+printf("\n enter page size:");
+scanf("%d",&s);
+p=(int *)malloc(s*sizeof(int));
+for(i=1;i<=n;i++)
+{
+printf("\n P%d address of page is %u",i,(p+i*s));
+}
+getch();
+}

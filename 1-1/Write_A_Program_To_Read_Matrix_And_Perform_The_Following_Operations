@@ -1,0 +1,42 @@
+
+ /* 8.c) Write a program to read matrix and perform the following operations.
+	i. Find the sum of Diagonal Elements of a matrix.
+	ii. Print Transpose of a matrix.
+	iii. Print sum of even and odd numbers in a given matrix. */
+
+	
+	#include<stdio.h>
+	#include<conio.h>
+	void main()
+	{
+		int a[8][8],s=0,se=0,so=0,n,i,j;
+		clrscr();
+		printf("\n Enter the order of the matrix :");
+		scanf("%d",&n);
+		printf("\n Enter the elemens of the matrix :");
+		for(i=1;i<=n;i++)
+			for(j=1;j<=n;j++)
+				scanf("%d",&a[i][j]);
+		for(i=1;i<=n;i++)
+			for(j=1;j<=n;j++)
+			{
+				if(a[i][j]%2==0) // even number
+					se=se+a[i][j];
+				else
+					so=so+a[i][j];
+				if( (i==j) || (i+j)==(n+1) ) //diagonal elements
+					s=s+a[i][j];
+			}	
+		printf("\n Sum of all diagonal elements is :%d",s);
+		printf("\n Sum of even numbers in matrix is :%d",se);
+		printf("\n Sum of odd numbers in matrix is :%d",so);
+		printf("\n Transpose of the given matrix is:\n");
+		for(i=1;i<=n;i++)
+		{
+			for(j=1;j<=n;j++)
+				printf("%3d",a[j][i]);
+			printf("\n");
+		}
+		getch();
+	}
+

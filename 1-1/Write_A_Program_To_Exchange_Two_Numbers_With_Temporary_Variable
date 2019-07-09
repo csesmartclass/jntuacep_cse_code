@@ -1,0 +1,16 @@
+
+ #include<stdio.h>
+	#include<conio.h>
+	void main()
+	{
+		int a,b,temp;
+		clrscr();
+		printf("enter a,b values\n");
+		scanf("%d %d", &a,&b);
+		printf("a,b values before swapping are %d %d\n",a,b);
+		temp=a;
+		a=b;
+		b=temp;
+		printf("a,b values after swapping are %d %d", a,b);
+		getch();
+	}

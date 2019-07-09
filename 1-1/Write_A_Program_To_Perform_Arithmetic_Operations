@@ -1,0 +1,19 @@
+
+ #include<stdio.h>
+	#include<conio.h>
+	#include<math.h>
+	void main()
+	{
+		double a,b,add,sub,mul,div,mod;
+		clrscr();
+		printf("enter 2 no's\n");
+		scanf("%lf %lf", &a,&b);
+		add=a+b;
+		sub=a-b;
+		mul=a*b;
+		div=a/b;
+		mod=fmod(a,b);
+		printf("Results of arithmetic operations are as follows\n");
+		printf("add=%lf, sub=%lf,mul=%lf, div=%lf, mod=%lf",add,sub,mul,div,mod);
+		getch();
+	}
